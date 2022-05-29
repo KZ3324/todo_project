@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Todo project list
+{% endblock %}
+
+{% block body %}
+
+<div class="col-6 mx-auto">
+	<h1 class="mx-auto text-center mt-4">To-do Project list</h1>
+  		{{form_start(form)}}
+  		<div class="mb-3 d-flex justify-content-between align-items-center mt-5">
+			<div class="w-75">{{form_row(form.contenu, {'attr': {'class': 'form-control w-100'}})}}</div>
+			<div>{{form_row(form.submit, {'attr' : {'class' : 'btn btn-primary'}})}}</div>
+		</div>
+  		{{form_end(form)}}
+	<div class="">
+	
+		<ul class="list-group">
+			{% for carte in cartes %}
+			<li class="list-group-item d-flex justify-content-between align-items-center">
+				<div>
+					{{carte.contenu}}
+				</div>
+				<div>
+					<a href="delete/{{ carte.id }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+				</div>
+			</li>
+			{% endfor %}
+		</ul>
+			
+	
+		
+	</div>
+</div>
+  
+{% endblock %}
